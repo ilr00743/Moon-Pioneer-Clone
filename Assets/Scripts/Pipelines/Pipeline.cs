@@ -1,5 +1,4 @@
-using System;
-using DG.Tweening;
+using System.Collections;
 using Player;
 using UnityEngine;
 
@@ -7,28 +6,32 @@ namespace Pipelines
 {
     public class Pipeline : MonoBehaviour
     {
-        [SerializeField] private SpriteRenderer _area;
-        
-        private void OnTriggerEnter(Collider other)
+        [SerializeField] private GameObject _component;
+        [SerializeField] private PipelineStackedComponentZone _stackedComponent;
+        private int _delay;
+
+        private void OnEnable()
         {
-            if (other.gameObject.TryGetComponent(out PlayerMovement player))
+            _delay = 3;
+            StartCoroutine(SpawnPerSeconds());
+        }
+
+        private IEnumerator SpawnPerSeconds()
+        {
+            var cooldown = new WaitForSeconds(_delay);
+            while (true)
             {
-                Debug.Log("Enter");
-                
-                var currentScale = _area.transform.localScale;
-                _area.transform.DOScale(new Vector3(currentScale.x + 1, currentScale.y + 1), 0.3f);
+                yield return cooldown;
+                Spawn();
             }
         }
-        
-        private void OnTriggerExit(Collider other)
-        {
-            if (other.TryGetComponent(out PlayerMovement player))
-            {
-                Debug.Log("Exit");
 
-                var currentScale = _area.transform.localScale;
-                _area.transform.DOScale(new Vector3(currentScale.x - 1, currentScale.y - 1), 0.3f);
-            }
+        private void Spawn()
+        {
+            if (_stackedComponent.IsFull) return;
+            
+            var obj = Instantiate(_component, _stackedComponent.transform);
+            _stackedComponent.SetComponentPosition(obj);
         }
     }
 }
