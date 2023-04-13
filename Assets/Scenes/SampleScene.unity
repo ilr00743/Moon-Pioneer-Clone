@@ -1283,7 +1283,7 @@ GameObject:
   - component: {fileID: 670881778}
   - component: {fileID: 670881777}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2394,13 +2394,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1166051622}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 377a916dc6c4481fbd05248b07f7b11f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _requiredAmount: 0
   _components: []
+  _componentCounter: {fileID: 0}
+  _requiredAmount: 0
   _currentAmount: 0
 --- !u!114 &1166051629
 MonoBehaviour:
@@ -2414,8 +2415,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5201eb8faa149649e8c56d0e7bae0e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _requiredAmount: 3
   _components: []
+  _componentCounter: {fileID: 1189271134}
+  _requiredAmount: 3
   _currentAmount: 0
 --- !u!114 &1166051630
 MonoBehaviour:
@@ -2429,8 +2431,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 215fdbbb144348ef8e53d549c655644a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _requiredAmount: 5
   _components: []
+  _componentCounter: {fileID: 1341037634}
+  _requiredAmount: 5
   _currentAmount: 0
 --- !u!1 &1169404253
 GameObject:
@@ -2554,8 +2557,9 @@ GameObject:
   - component: {fileID: 1189271131}
   - component: {fileID: 1189271133}
   - component: {fileID: 1189271132}
+  - component: {fileID: 1189271134}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: RepairKitAmount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2678,6 +2682,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1189271130}
   m_CullTransparentMesh: 1
+--- !u!114 &1189271134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1189271130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee9dfc1b97d54187b9eba18ad19986b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentType: 2
 --- !u!1 &1205267052
 GameObject:
   m_ObjectHideFlags: 0
@@ -2843,8 +2860,9 @@ GameObject:
   - component: {fileID: 1341037631}
   - component: {fileID: 1341037633}
   - component: {fileID: 1341037632}
+  - component: {fileID: 1341037634}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: GasAmount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2967,6 +2985,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1341037630}
   m_CullTransparentMesh: 1
+--- !u!114 &1341037634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1341037630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee9dfc1b97d54187b9eba18ad19986b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _componentType: 1
 --- !u!1 &1369632333
 GameObject:
   m_ObjectHideFlags: 0

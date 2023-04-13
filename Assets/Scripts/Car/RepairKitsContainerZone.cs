@@ -7,6 +7,7 @@ namespace Car
     public class RepairKitsContainerZone : BaseContainerZone<RepairKit>
     {
         private Coroutine _coroutine;
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.TryGetComponent(out PlayerContainer playerContainer))
