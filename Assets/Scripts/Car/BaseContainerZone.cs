@@ -25,7 +25,6 @@ namespace Car
 
         protected IEnumerator ReceiveComponent(PlayerContainer playerContainer, ComponentType componentType)
         {
-            var delay = new WaitForSeconds(0.1f);
             while (true)
             {
                 if (playerContainer.IsEmpty) yield break;
@@ -41,7 +40,7 @@ namespace Car
                 
                 if (_currentAmount != _requiredAmount) _currentAmount++;
                 
-                yield return delay;
+                yield return null;
             }
         }
     }
