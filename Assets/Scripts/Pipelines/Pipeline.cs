@@ -1,18 +1,18 @@
 using System.Collections;
-using Player;
+using Collectables;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Pipelines
 {
     public class Pipeline : MonoBehaviour
     {
-        [SerializeField] private GameObject _component;
-        [SerializeField] private PipelineStackedComponentZone _stackedComponent;
-        private int _delay;
+        [SerializeField] private CollectableComponent _component;
+        [FormerlySerializedAs("_stackedComponent")] [SerializeField] private PipelineStackedComponentZone _stackedComponents;
+        [SerializeField] private float _delay;
 
         private void OnEnable()
         {
-            _delay = 3;
             StartCoroutine(SpawnPerSeconds());
         }
 
@@ -28,10 +28,10 @@ namespace Pipelines
 
         private void Spawn()
         {
-            if (_stackedComponent.IsFull) return;
+            if (_stackedComponents.IsFull) return;
             
-            var obj = Instantiate(_component, _stackedComponent.transform);
-            _stackedComponent.SetComponentPosition(obj);
+            var obj = Instantiate(_component, _stackedComponents.transform);
+            _stackedComponents.PlaceComponent(obj);
         }
     }
 }
