@@ -4,7 +4,6 @@ namespace Player.Input
 {
     public class JoystickInput : MonoBehaviour
     {
-        [SerializeField] private PlayerMovement _playerMovement;
         [SerializeField] private Joystick _joystick;
         
         public Vector3 InputDirection { get; private set; }

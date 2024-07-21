@@ -3,46 +3,44 @@ using UnityEngine;
 
 namespace Player
 {
-    [RequireComponent(typeof(Rigidbody))]
+    [RequireComponent(typeof(CharacterController))]
     public class PlayerMovement : MonoBehaviour
     {
         [SerializeField] private float _speed;
         [SerializeField] private Transform _playerModel;
         [SerializeField] private JoystickInput _joystickInput;
+        private CharacterController _characterController;
         private PlayerAnimation _animation;
-        private Rigidbody _rigidbody;
         public Transform Transform { get; private set; }
 
-        public Rigidbody Rigidbody => _rigidbody; 
         private void Awake()
         {
             Transform = GetComponent<Transform>();
             _animation = GetComponent<PlayerAnimation>();
-            _rigidbody = GetComponent<Rigidbody>();
+            _characterController = GetComponent<CharacterController>();
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             Move(_joystickInput.InputDirection);
         }
         
-        public void Move(Vector3 direction)
+        public void Move(Vector3 inputDirection)
         {
-            if (direction == Vector3.zero)
+            if (inputDirection == Vector3.zero)
             {
                 Stop();
             }
 
-            _playerModel.LookAt(_playerModel.position + direction);
-             _rigidbody.velocity = direction * _speed;
-            _animation.SetSpeed(direction.magnitude);
+            _playerModel.LookAt(_playerModel.position + inputDirection);
+            _characterController.Move(inputDirection *_speed * Time.deltaTime);
+            _animation.SetSpeed(inputDirection.magnitude);
         }
 
         public void Stop()
         {
             _animation.SetSpeed(0);
-            _rigidbody.velocity = Vector3.zero;
-            _rigidbody.angularVelocity = Vector3.zero;
+            _characterController.Move(Vector3.zero);
         }
     }
 }
