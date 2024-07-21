@@ -6,6 +6,8 @@ namespace Player.Input
     {
         [SerializeField] private PlayerMovement _playerMovement;
         [SerializeField] private Joystick _joystick;
+        
+        public Vector3 InputDirection { get; private set; }
 
         private void Awake()
         {
@@ -14,13 +16,7 @@ namespace Player.Input
 
         private void Update()
         {
-            if (_joystick.Direction == Vector2.zero)
-            {
-                _playerMovement.Stop();
-                return;
-            }
-            var direction = new Vector3(_joystick.Direction.x, 0, _joystick.Direction.y);
-            _playerMovement.Move(direction);  
+            InputDirection = new Vector3(_joystick.Direction.x, 0, _joystick.Direction.y);  
         }
     }
 }
